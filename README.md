@@ -1,0 +1,2 @@
+# lastfm_chart_services
+There's a Last.FM collage generator at http://tapmusic.net/ which is good and fine (and I donated money to them as well). But I wanted to self-host, get a little more experience with REST APIs (even if it's with CURL) and imagemagick, so I'm aiming to recreate it here with BASH. That and all the freaking Last.FM repositories I'm finding have problems of some kind or another. Le sigh.
