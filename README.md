@@ -10,8 +10,24 @@ of some kind or another. Le sigh.
 This implies that you're going to have some way to post to social media 
 automagically like ttytter (or the project that's replaced it).
 
-#TODO (yeah, all of it)
+# Requires
 
-* Get the *current* or *last* track of the user in question. This could replace the functionality we used to have with RSS feeds.
-* Post a current track with the album art!
-* Top albums for 7d and top artists for 7d, then parse out the image urls (or see if they're in a local directory!) and make up the collage
+* curl
+* [jq](https://github.com/stedolan/jq)
+* awk
+* imagemagick
+* last.fm account (duh) and [API key](https://www.last.fm/api)
+
+# Usage
+
+Make sure you get a last.fm API key.  :)
+
+Create lastfm_collage.rc in $HOME/.config with these lines (in order!)
+```
+YOUR_API_KEY
+YOUR_USERNAME
+7day
+/DIRECTORY/FOR/OUTPUT
+```
+
+Then run the script!
