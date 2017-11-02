@@ -3,9 +3,10 @@
 There's a Last.FM collage generator at http://tapmusic.net/ which is 
 good and fine (and I donated money to them as well). But I wanted to 
 self-host, get a little more experience with REST APIs (even if it's 
-with CURL) and imagemagick, so I'm aiming to recreate it here with bash. 
-That and all the freaking Last.FM repositories I'm finding have problems 
-of some kind or another. Le sigh.
+with CURL) and imagemagick, so I'm aiming to recreate it here with bash
+and formatted the way I want it. 
+
+![Example](https://s26.postimg.org/45icvxk3t/current_collage.jpg)
 
 This implies that you're going to have some way to post to social media 
 automagically like ttytter (or the project that's replaced it).
@@ -15,7 +16,7 @@ automagically like ttytter (or the project that's replaced it).
 * curl
 * [jq](https://github.com/stedolan/jq)
 * awk
-* imagemagick
+* [imagemagick](http://www.imagemagick.org)
 * last.fm account (duh) and [API key](https://www.last.fm/api)
 
 # Usage
