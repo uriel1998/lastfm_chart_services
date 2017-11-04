@@ -56,8 +56,8 @@ parse_json() {
         albumname=("${albumname[@]}" "$toadd")
         toadd=$(cat "$TEMPJSON" | jq -M  '.topalbums | .album | '".[$i]"' | .image' | grep -B1 -w "extralarge" | grep -v "extralarge" | awk -F '"' '{print $4}')  
         imageurl=("${imageurl[@]}" "$toadd")
-        echo "${albumname[i]}" >> "$TEMPDIR/log.log"
-        echo "${imageurl[i]}" >> "$TEMPDIR/log.log"
+        echo "${albumname[i]}"
+        echo "${imageurl[i]}" 
         
         # No image; try imgholder
         if [ ! -z "${imageurl[i]}" ];then
@@ -108,7 +108,7 @@ main() {
     curl_time
     parse_json
     make_collage
-#    cleanup
+    cleanup
 	exit 0
 }
 
