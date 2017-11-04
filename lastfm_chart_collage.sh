@@ -3,13 +3,17 @@
 ########################################################################
 # This script is designed to create a collage from the respective user's
 # last.fm charts. Based off the 2.0 API, and uses curl
-
 ########################################################################
 
 TEMPDIR=$(mktemp -d)
 touch $TEMPDIR/tempjson.json
 TEMPJSON=$(echo "$TEMPDIR/tempjson.json")
 
+########################################################################
+# This is for my imgholder script which will download a stock image when
+# nothing else is available
+########################################################################
+imgholder_location=$(which imgholder.sh)
 
 if [ -f "$HOME/.config/lastfm_collage.rc" ];then
     readarray -t line < "$HOME/.config/lastfm_collage.rc"
@@ -52,11 +56,19 @@ parse_json() {
         albumname=("${albumname[@]}" "$toadd")
         toadd=$(cat "$TEMPJSON" | jq -M  '.topalbums | .album | '".[$i]"' | .image' | grep -B1 -w "extralarge" | grep -v "extralarge" | awk -F '"' '{print $4}')  
         imageurl=("${imageurl[@]}" "$toadd")
-        echo "Welcome $i times"
-        echo "${albumname[i]}"
-        echo "${imageurl[i]}"
-        wget -O "$TEMPDIR/$i.png" "${imageurl[i]}"
+        echo "${albumname[i]}" >> "$TEMPDIR/log.log"
+        echo "${imageurl[i]}" >> "$TEMPDIR/log.log"
+        
+        # No image; try imgholder
+        if [ ! -z "${imageurl[i]}" ];then
+            wget -O "$TEMPDIR/$i.png" "${imageurl[i]}"
+        else
+            if [ ! -z "$imgholder_location" ];then
+                bob=$($imgholder_location -o "$TEMPDIR/$i.png")
+            fi
+        fi 
 
+        
         # Commented out because it tends to cover up the albums; maybe eventually I'll add it back in
         # Please note that if 
         #convert -size 256x128 -background none -fill white -stroke black -strokewidth 0.01 -font Interstate  -gravity SouthWest caption:"${albumname[i]}" "$TEMPDIR/Text$i.png"  
@@ -96,7 +108,7 @@ main() {
     curl_time
     parse_json
     make_collage
-    cleanup
+#    cleanup
 	exit 0
 }
 

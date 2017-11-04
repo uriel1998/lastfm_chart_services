@@ -19,6 +19,10 @@ automagically like ttytter (or the project that's replaced it).
 * [imagemagick](http://www.imagemagick.org)
 * last.fm account (duh) and [API key](https://www.last.fm/api)
 
+Optional
+
+* [simple_placeholder_images](https://github.com/uriel1998/simple_placeholder_images) to deal with missing album covers
+
 # Usage
 
 Make sure you get a last.fm API key.  :)
