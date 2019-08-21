@@ -22,6 +22,7 @@ automagically like ttytter (or the project that's replaced it).
 Optional
 
 * [simple_placeholder_images](https://github.com/uriel1998/simple_placeholder_images) to deal with missing album covers
+* [vindauga](https://github.com/uriel1998/vindauga) cache used if last.fm fails
 
 # Usage
 
@@ -36,3 +37,9 @@ YOUR_USERNAME
 ```
 
 Then run the script!
+
+
+# TODO
+
+* Have the script use vindauga first
+* See if there's a better way to get play counts instead of relying on last.fm
